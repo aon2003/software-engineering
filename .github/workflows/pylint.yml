@@ -4,29 +4,24 @@ on: [push]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10"]
+
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.8
     - name: Install dependencies
       run: |
         cd mysite
         python -m pip install --upgrade pip
         pip install pylint
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Analysing the code with pylint
       run: |
         cd mysite
-        # pylint `ls -R|grep .py$|xargs`
-        pylint $(git ls-files '*.py')
-        # pylint $(find . -name "*.py" | xargs)
-    - name: Analysing the code with pylint
-      run: |
         python -m pylint --fail-under=10 `find -regextype egrep -regex '(.*.py)$'` |
         tee pylint.txt
     - name: Upload pylint.txt as artifact
