@@ -23,4 +23,5 @@ jobs:
       run: |
         cd mysite
         # pylint `ls -R|grep .py$|xargs`
-        pylint $(find . -name "*.py" | xargs)
+        pylint $(git ls-files '*.py')
+        # pylint $(find . -name "*.py" | xargs)
