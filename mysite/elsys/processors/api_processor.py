@@ -4,7 +4,7 @@ COMMENTS_URL = "https://jsonplaceholder.typicode.com/posts/1/comments"
 POSTS_URL = "https://jsonplaceholder.typicode.com/posts"
 
 
-def sort_function(json):
+def sort_func(json):
     try:
         if 'title' in json:
             return len(json['title'])
