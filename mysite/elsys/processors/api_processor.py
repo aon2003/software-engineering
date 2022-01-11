@@ -4,7 +4,7 @@ COMMENTS_URL = "https://jsonplaceholder.typicode.com/posts/1/comments"
 POSTS_URL = "https://jsonplaceholder.typicode.com/posts"
 
 
-def sort_func(json):
+def sort_function(json):
     try:
         if 'title' in json:
             return len(json['title'])
@@ -20,10 +20,6 @@ class ApiProcessor:
         data = requests.get(COMMENTS_URL)
         comments = sorted(data.json(), key=sort_func, reverse=True)
         return comments[0]
-    
-    
-    
-    
     
     @staticmethod
     def post_with_longest_title():
