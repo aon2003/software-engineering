@@ -1,6 +1,6 @@
 import requests
 
-COMMENTS_URL = "https://jsonplaceholder.typicode.com/posts/1/comments"
+COMMENTSS_URL = "https://jsonplaceholder.typicode.com/posts/1/comments"
 POSTS_URL = "https://jsonplaceholder.typicode.com/posts"
 
 
@@ -17,7 +17,7 @@ def sort_func(json):
 class ApiProcessor:
     @staticmethod
     def longest_comment():
-        data = requests.get(COMMENTS_URL)
+        data = requests.get(COMMENTSS_URL)
         comments = sorted(data.json(), key=sort_func, reverse=True)
         return comments[0]
     
