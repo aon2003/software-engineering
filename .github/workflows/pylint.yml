@@ -22,4 +22,4 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         cd mysite
-        pylint-fail-under --fail_under=7.5 $(git ls-files '*.py') | tee
+        pylint-fail-under --fail_under 7.5 $(git ls-files '*.py') | tee
